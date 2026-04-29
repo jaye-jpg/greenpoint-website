@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Study Editor | Greenpoint</title>
+  <style>
+    :root {
+      --dark: #1a1a1a;
+      --light: #f5f4f1;
+      --green: #7e9786;
+      --border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      background: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--dark);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img { height: 20px; }
+
+    header span {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .editor {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      opacity: 0.5;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: var(--border);
+    }
+
+    .field-group {
+      margin-bottom: 40px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+    }
+
+    input, textarea, select {
+      font-family: inherit;
+      font-weight: 300;
+      font-size: 14px;
+      padding: 10px 14px;
+      border: var(--border);
+      background: #fff;
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      width: 100%;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--green);
+    }
+
+    textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+    .tags-note {
+      font-size: 11px;
+      opacity: 0.4;
+      margin-top: 4px;
+    }
+
+    .blocks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .block-card {
+      background: #fff;
+      border: var(--border);
+      overflow: hidden;
+    }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: #fafafa;
+      border-bottom: var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .block-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .block-type-badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--dark);
+      color: #fff;
+      padding: 3px 8px;
+    }
+
+    .block-label {
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    .block-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-icon {
+      background: none;
+      border: var(--border);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--dark);
+      transition: background 0.15s;
+    }
+
+    .btn-icon:hover { background: var(--light); }
+    .btn-icon.danger:hover { background: #fee; color: #c00; border-color: #c00; }
+
+    .block-body {
+      padding: 20px;
+    }
+
+    .block-body.collapsed { display: none; }
+
+    .list-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .list-item input { flex: 1; }
+
+    .btn-remove-item {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      opacity: 0.3;
+      padding: 0 4px;
+      line-height: 1;
+      transition: opacity 0.15s;
+    }
+
+    .btn-remove-item:hover { opacity: 0.8; }
+
+    .add-block-area {
+      margin-bottom: 48px;
+    }
+
+    .add-block-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+      margin-bottom: 12px;
+    }
+
+    .block-type-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-add-block {
+      font-family: inherit;
+      font-weight: 300;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 16px;
+      border: var(--border);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--dark);
+    }
+
+    .btn-add-block:hover {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    .btn-add-list-item {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 300;
+      padding: 6px 12px;
+      background: none;
+      border: var(--border);
+      cursor: pointer;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: all 0.15s;
+    }
+
+    .btn-add-list-item:hover { background: var(--light); }
+
+    .actions-bar {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 24px 0;
+      border-top: var(--border);
+    }
+
+    .btn-primary {
+      font-family: inherit;
+      font-weight: 300;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 32px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--green); }
+
+    .btn-secondary {
+      font-family: inherit;
+      font-weight: 300;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 32px;
+      background: none;
+      color: var(--dark);
+      border: var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-secondary:hover { background: var(--dark); color: #fff; }
+
+    .actions-note {
+      font-size: 12px;
+      opacity: 0.4;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: var(--dark);
+      color: #fff;
+      padding: 14px 24px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://greenpointmedia.com.au/wp-content/uploads/2022/06/d.navlogo.svg" alt="Greenpoint">
+  <span>Case Study Editor</span>
+</header>
+
+<div class="editor">
+  <h1>Case Study Editor</h1>
+  <p class="subtitle">Fill in the details, add your content blocks, then download the JSON file to upload to GitHub.</p>
+
+  <div class="field-group">
+    <p class="section-title">Case Study Details</p>
+
+    <div class="field">
+      <label>Title</label>
+      <input type="text" id="cs-title" placeholder="e.g. Hyatt House Makes Its Australian Debut">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Slug (filename, no spaces)</label>
+        <input type="text" id="cs-slug" placeholder="e.g. hyatt-house">
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <input type="text" id="cs-category" placeholder="e.g. Campaign, Activation, PR">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Tags (comma separated)</label>
+      <input type="text" id="cs-tags" placeholder="e.g. PR, Influencer, Events">
+      <span class="tags-note">Shown on the work grid card</span>
+    </div>
+
+    <div class="field">
+      <label>Thumbnail Image URL</label>
+      <input type="text" id="cs-thumbnail" placeholder="https://greenpointmedia.com.au/wp-content/uploads/...">
+      <span class="tags-note">The image shown on the Work page grid</span>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <p class="section-title">Content Blocks</p>
+    <div class="blocks-list" id="blocks-list"></div>
+
+    <div class="add-block-area">
+      <p class="add-block-label">Add a block</p>
+      <div class="block-type-buttons">
+        <button class="btn-add-block" onclick="addBlock('hero')">+ Hero Image</button>
+        <button class="btn-add-block" onclick="addBlock('intro')">+ Intro Text</button>
+        <button class="btn-add-block" onclick="addBlock('image')">+ Full Image</button>
+        <button class="btn-add-block" onclick="addBlock('section')">+ Section</button>
+        <button class="btn-add-block" onclick="addBlock('logos')">+ As Seen On</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-bar">
+    <button class="btn-primary" onclick="downloadJSON()">Download JSON</button>
+    <button class="btn-secondary" onclick="previewCaseStudy()">Preview</button>
+    <span class="actions-note">Upload the downloaded file to GitHub at content/case-studies/your-slug.json</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let blocks = [];
+let blockCounter = 0;
+
+function addBlock(type) {
+  const id = ++blockCounter;
+  const block = { id, type };
+  if (type === 'section') {
+    block.number = '';
+    block.heading = '';
+    block.list = [''];
+    block.body = '';
+  } else if (type === 'logos') {
+    block.number = '';
+    block.heading = 'As Seen On';
+    block.items = [{ name: '', src: '' }];
+  }
+  blocks.push(block);
+  renderBlocks();
+}
+
+function removeBlock(id) {
+  blocks = blocks.filter(b => b.id !== id);
+  renderBlocks();
+}
+
+function moveBlock(id, dir) {
+  const idx = blocks.findIndex(b => b.id === id);
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= blocks.length) return;
+  [blocks[idx], blocks[newIdx]] = [blocks[newIdx], blocks[idx]];
+  renderBlocks();
+}
+
+function toggleBlock(id) {
+  const body = document.getElementById('block-body-' + id);
+  body.classList.toggle('collapsed');
+}
+
+function renderBlocks() {
+  const list = document.getElementById('blocks-list');
+  list.innerHTML = blocks.map((b, i) => renderBlockCard(b, i)).join('');
+}
+
+function renderBlockCard(block, idx) {
+  const { id, type } = block;
+  const labels = { hero: 'Hero Image', intro: 'Intro Text', image: 'Full Image', section: 'Section', logos: 'As Seen On' };
+  let bodyHTML = '';
+
+  if (type === 'hero' || type === 'image') {
+    bodyHTML = `
+      <div class="field">
+        <label>Image URL</label>
+        <input type="text" placeholder="https://greenpointmedia.com.au/wp-content/uploads/..."
+          value="${block.src || ''}"
+          oninput="updateBlock(${id}, 'src', this.value)">
+      </div>
+      <div class="field">
+        <label>Alt text</label>
+        <input type="text" placeholder="Describe the image"
+          value="${block.alt || ''}"
+          oninput="updateBlock(${id}, 'alt', this.value)">
+      </div>`;
+  }
+
+  if (type === 'intro') {
+    bodyHTML = `
+      <div class="field">
+        <label>Heading</label>
+        <input type="text" placeholder="Case study title"
+          value="${block.heading || ''}"
+          oninput="updateBlock(${id}, 'heading', this.value)">
+      </div>
+      <div class="field">
+        <label>Body text (separate paragraphs with a blank line)</label>
+        <textarea placeholder="Write your intro copy here..." rows="6"
+          oninput="updateBlock(${id}, 'body', this.value)">${block.body || ''}</textarea>
+      </div>`;
+  }
+
+  if (type === 'section') {
+    const listItems = (block.list || ['']).map((item, li) => `
+      <div class="list-item">
+        <input type="text" placeholder="List item" value="${item}"
+          oninput="updateListItem(${id}, ${li}, this.value)">
+        <button class="btn-remove-item" onclick="removeListItem(${id}, ${li})">×</button>
+      </div>`).join('');
+
+    bodyHTML = `
+      <div class="field-row">
+        <div class="field">
+          <label>Number</label>
+          <input type="text" placeholder="01" value="${block.number || ''}"
+            oninput="updateBlock(${id}, 'number', this.value)">
+        </div>
+        <div class="field">
+          <label>Heading</label>
+          <input type="text" placeholder="What We Did" value="${block.heading || ''}"
+            oninput="updateBlock(${id}, 'heading', this.value)">
+        </div>
+      </div>
+      <div class="field">
+        <label>Bullet list</label>
+        <div class="list-items" id="list-${id}">${listItems}</div>
+        <button class="btn-add-list-item" onclick="addListItem(${id})">+ Add item</button>
+      </div>
+      <div class="field">
+        <label>Body text (separate paragraphs with a blank line)</label>
+        <textarea placeholder="Supporting copy..." rows="4"
+          oninput="updateBlock(${id}, 'body', this.value)">${block.body || ''}</textarea>
+      </div>`;
+  }
+
+  if (type === 'logos') {
+    const logoItems = (block.items || []).map((item, li) => `
+      <div class="list-item">
+        <input type="text" placeholder="Publication name" value="${item.name || ''}"
+          oninput="updateLogoItem(${id}, ${li}, 'name', this.value)" style="max-width:200px">
+        <input type="text" placeholder="Logo image URL" value="${item.src || ''}"
+          oninput="updateLogoItem(${id}, ${li}, 'src', this.value)">
+        <button class="btn-remove-item" onclick="removeLogoItem(${id}, ${li})">×</button>
+      </div>`).join('');
+
+    bodyHTML = `
+      <div class="field-row">
+        <div class="field">
+          <label>Number</label>
+          <input type="text" placeholder="03" value="${block.number || ''}"
+            oninput="updateBlock(${id}, 'number', this.value)">
+        </div>
+        <div class="field">
+          <label>Heading</label>
+          <input type="text" placeholder="As Seen On" value="${block.heading || ''}"
+            oninput="updateBlock(${id}, 'heading', this.value)">
+        </div>
+      </div>
+      <div class="field">
+        <label>Publications</label>
+        <div class="list-items" id="logos-${id}">${logoItems}</div>
+        <button class="btn-add-list-item" onclick="addLogoItem(${id})">+ Add publication</button>
+      </div>`;
+  }
+
+  return `
+    <div class="block-card" id="block-${id}">
+      <div class="block-header" onclick="toggleBlock(${id})">
+        <div class="block-header-left">
+          <span class="block-type-badge">${type}</span>
+          <span class="block-label">${labels[type]}</span>
+        </div>
+        <div class="block-actions" onclick="event.stopPropagation()">
+          <button class="btn-icon" onclick="moveBlock(${id}, -1)" title="Move up">↑</button>
+          <button class="btn-icon" onclick="moveBlock(${id}, 1)" title="Move down">↓</button>
+          <button class="btn-icon danger" onclick="removeBlock(${id})" title="Remove">×</button>
+        </div>
+      </div>
+      <div class="block-body" id="block-body-${id}">
+        ${bodyHTML}
+      </div>
+    </div>`;
+}
+
+function updateBlock(id, key, value) {
+  const block = blocks.find(b => b.id === id);
+  if (block) block[key] = value;
+}
+
+function updateListItem(id, idx, value) {
+  const block = blocks.find(b => b.id === id);
+  if (block) block.list[idx] = value;
+}
+
+function addListItem(id) {
+  const block = blocks.find(b => b.id === id);
+  if (block) { block.list.push(''); renderBlocks(); }
+}
+
+function removeListItem(id, idx) {
+  const block = blocks.find(b => b.id === id);
+  if (block && block.list.length > 1) { block.list.splice(idx, 1); renderBlocks(); }
+}
+
+function updateLogoItem(id, idx, key, value) {
+  const block = blocks.find(b => b.id === id);
+  if (block) block.items[idx][key] = value;
+}
+
+function addLogoItem(id) {
+  const block = blocks.find(b => b.id === id);
+  if (block) { block.items.push({ name: '', src: '' }); renderBlocks(); }
+}
+
+function removeLogoItem(id, idx) {
+  const block = blocks.find(b => b.id === id);
+  if (block && block.items.length > 1) { block.items.splice(idx, 1); renderBlocks(); }
+}
+
+function buildJSON() {
+  const slug = document.getElementById('cs-slug').value.trim();
+  const title = document.getElementById('cs-title').value.trim();
+  const category = document.getElementById('cs-category').value.trim();
+  const tagsRaw = document.getElementById('cs-tags').value.trim();
+  const thumbnail = document.getElementById('cs-thumbnail').value.trim();
+  const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+  const outputBlocks = blocks.map(block => {
+    const { id, ...rest } = block;
+    if (rest.type === 'section') rest.list = rest.list.filter(Boolean);
+    return rest;
+  });
+
+  return { slug, title, category, tags, thumbnail, blocks: outputBlocks };
+}
+
+function downloadJSON() {
+  const slug = document.getElementById('cs-slug').value.trim() || 'case-study';
+  const data = buildJSON();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = slug + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded ' + slug + '.json');
+}
+
+function previewCaseStudy() {
+  const slug = document.getElementById('cs-slug').value.trim();
+  if (!slug) { showToast('Add a slug first'); return; }
+  const data = buildJSON();
+  localStorage.setItem('gp-preview-' + slug, JSON.stringify(data));
+  window.open('case-study.html?slug=preview:' + slug, '_blank');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const titleInput = document.getElementById('cs-title');
+  const slugInput = document.getElementById('cs-slug');
+  titleInput.addEventListener('input', () => {
+    if (!slugInput.dataset.manual) {
+      slugInput.value = titleInput.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+  });
+  slugInput.addEventListener('input', () => {
+    slugInput.dataset.manual = '1';
+  });
+});
+</script>
+</body>
+</html>
