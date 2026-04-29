@@ -1,0 +1,49 @@
+name: Update case study index
+
+on:
+  push:
+    paths:
+      - 'content/case-studies/**.json'
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate index.json
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const dir = 'content/case-studies';
+          const files = fs.readdirSync(dir)
+            .filter(f => f.endsWith('.json') && f !== 'index.json');
+          const index = files.map(f => {
+            try {
+              const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+              return {
+                slug: data.slug,
+                title: data.title,
+                category: data.category || '',
+                tags: data.tags || [],
+                thumbnail: data.thumbnail || ''
+              };
+            } catch (e) {
+              console.error('Skipping ' + f + ' - invalid JSON');
+              return null;
+            }
+          }).filter(Boolean);
+          fs.writeFileSync(path.join(dir, 'index.json'), JSON.stringify(index, null, 2));
+          console.log('Generated index with ' + index.length + ' case studies');
+          "
+
+      - name: Commit index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/case-studies/index.json
+          git diff --staged --quiet || git commit -m "Auto-update case study index"
+          git push
