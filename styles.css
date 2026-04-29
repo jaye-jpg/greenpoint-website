@@ -793,7 +793,7 @@ body{
   }
 
   /* Hero */
-  .gp-hero{height:60vw;min-height:240px}
+  .gp-hero{height:75vw;min-height:300px}
 
   /* PR */
   .gp-pr-image{
