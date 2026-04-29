@@ -34,90 +34,38 @@
 
   <section class="work-page bg-light">
     <h1 class="work-title t-dark t-upper f300">Work</h1>
-
-    <div class="work-grid">
-
-     <article class="work-card">
-        <a href="case-study.html?slug=hyatt-house">
-          <div class="work-card-img">
-            <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-1.png" alt="Hyatt House">
-          </div>
-          <span class="work-card-category">Campaign</span>
-          <p class="work-card-desc">Hyatt House Makes Its Australian Debut</p>
-          <span class="work-card-tags">PR, Influencer, Events</span>
-        </a>
-      </article>
-
- <article class="work-card">
-  <a href="case-study.html?slug=wel-co-breaking-new-ground-in-mallala">
-    <div class="work-card-img">
-      <img src="https://greenpointmedia.com.au/wp-content/uploads/2025/07/Wel.Co-Gracewood-SodturnWEB-scaled.jpg" alt="Wel.Co">
-    </div>
-    <span class="work-card-category">PR</span>
-    <p class="work-card-desc">Wel.co = Breaking New Ground in Mallala</p>
-    <span class="work-card-tags">PR</span>
-  </a>
-</article>
-
- <article class="work-card">
-  <a href="case-study.html?slug=pomeroy-pacific-setting-a-new-benchmark-for-boutique-luxury-in-hawthorn">
-    <div class="work-card-img">
-      <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Kooyongkoot-Road-Corner_Rev23-WEB-scaled-e1777450009208.jpeg" alt="Pomeroy Pacific">
-    </div>
-    <span class="work-card-category">PR</span>
-    <p class="work-card-desc">Pomeroy Pacific — Setting a New Benchmark for Boutique Luxury in Hawthorn</p>
-    <span class="work-card-tags">PR</span>
-  </a>
-</article>
-
-      <article class="work-card">
-        <div class="work-card-img">
-          <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-4.png" alt="Property development">
-        </div>
-        <span class="work-card-category">Activation</span>
-        <p class="work-card-desc">Lorem ipsum dolor sit amet consectetur. Lacinia arcu tristique.</p>
-        <span class="work-card-tags">Branding, Social, PR</span>
-      </article>
-
-      <article class="work-card">
-        <div class="work-card-img">
-          <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-5.png" alt="Hey Zomi campaign">
-        </div>
-        <span class="work-card-category">Campaign</span>
-        <p class="work-card-desc">Lorem ipsum dolor sit amet consectetur. Lacinia arcu tristique.</p>
-        <span class="work-card-tags">Branding, Social, PR</span>
-      </article>
-
-      <article class="work-card">
-        <div class="work-card-img">
-          <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-6.png" alt="Eco product campaign">
-        </div>
-        <span class="work-card-category">Activation</span>
-        <p class="work-card-desc">Lorem ipsum dolor sit amet consectetur. Lacinia arcu tristique.</p>
-        <span class="work-card-tags">Branding, Social, PR</span>
-      </article>
-
-      <article class="work-card">
-        <div class="work-card-img">
-          <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-7.png" alt="Park House">
-        </div>
-        <span class="work-card-category">Activation</span>
-        <p class="work-card-desc">Lorem ipsum dolor sit amet consectetur. Lacinia arcu tristique.</p>
-        <span class="work-card-tags">Branding, Social, PR</span>
-      </article>
-
-      <article class="work-card">
-        <div class="work-card-img">
-          <img src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-8.png" alt="Luxury resort">
-        </div>
-        <span class="work-card-category">Activation</span>
-        <p class="work-card-desc">Lorem ipsum dolor sit amet consectetur. Lacinia arcu tristique.</p>
-        <span class="work-card-tags">Branding, Social, PR</span>
-      </article>
-
-    </div>
+    <div class="work-grid" id="work-grid"></div>
   </section>
 
 </div>
+
+<script>
+(async function () {
+  const grid = document.getElementById('work-grid');
+
+  let studies;
+  try {
+    const res = await fetch('content/case-studies/index.json');
+    if (!res.ok) throw new Error();
+    studies = await res.json();
+  } catch (e) {
+    grid.innerHTML = '<p style="opacity:0.4;font-size:14px">No case studies found.</p>';
+    return;
+  }
+
+  grid.innerHTML = studies.map(s => `
+    <article class="work-card">
+      <a href="case-study.html?slug=${s.slug}">
+        <div class="work-card-img">
+          <img src="${s.thumbnail || ''}" alt="${s.title}">
+        </div>
+        <span class="work-card-category">${s.category || ''}</span>
+        <p class="work-card-desc">${s.title}</p>
+        <span class="work-card-tags">${(s.tags || []).join(', ')}</span>
+      </a>
+    </article>
+  `).join('');
+}());
+</script>
 </body>
 </html>
