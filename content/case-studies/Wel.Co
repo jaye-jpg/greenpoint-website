@@ -1,0 +1,36 @@
+{
+  "slug": "wel-co-breaking-new-ground-in-mallala",
+  "title": "Wel.co = Breaking New Ground in Mallala",
+  "category": "",
+  "tags": [
+    "PR"
+  ],
+  "thumbnail": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/Wel.Co-Gracewood-SodturnWEB-scaled.jpg",
+  "blocks": [
+    {
+      "type": "hero",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/Wel.Co-Gracewood-SodturnWEB-scaled.jpg",
+      "alt": "Breaking New Ground in Mallala"
+    },
+    {
+      "type": "intro",
+      "heading": "Breaking New Ground in Mallala",
+      "body": "To mark the beginning of construction at Gracewood – a $100 million, 512-home masterplanned community in Mallala, Greenpoint supported Wel.Co with a powerful PR campaign that positioned the project as a major milestone for regional South Australia.\n\nFrom announcing the ground-breaking to amplifying the community’s vision across national and local media, the campaign earned widespread attention, reinforcing Wel.Co’s commitment to unlocking housing supply in fast-growing outer-metro areas."
+    },
+    {
+      "type": "logos",
+      "number": "",
+      "heading": "As Seen On",
+      "items": [
+        {
+          "name": "Mumbrella",
+          "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/05/MUMBRELLA-LOGO-scaled.png"
+        },
+        {
+          "name": "",
+          "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/05/FMCG-Logo.png"
+        }
+      ]
+    }
+  ]
+}
