@@ -3,11 +3,11 @@
   "title": "Hyatt House Makes Its Australian Debut",
   "category": "Campaign",
   "tags": ["PR", "Influencer", "Events"],
-  "thumbnail": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-1.png",
+  "thumbnail": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/HHSM_OneBedSuite_HiRes-2-scaled.jpg",
   "blocks": [
     {
       "type": "hero",
-      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Hero.png",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/HHSM_OneBedSuite_HiRes-2-scaled.jpg",
       "alt": "Hyatt House Melbourne interior"
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "type": "image",
-      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Building.png",
+      "src": https://greenpointmedia.com.au/wp-content/uploads/2025/07/HHSM_Exterior_Entry_HiRes.jpg,
       "alt": "Hyatt House Melbourne exterior"
     },
     {
@@ -62,12 +62,12 @@
       "number": "03",
       "heading": "As Seen On",
       "items": [
-        { "name": "Escape", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-escape.png" },
-        { "name": "Travel", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-travel.png" },
-        { "name": "Herald Sun", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-heraldsun.png" },
-        { "name": "Gourmet Traveller", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-gourmet.png" },
-        { "name": "Hotel Conversation", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-hotelconversation.png" },
-        { "name": "Dog's Life", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-dogslife.png" }
+        { "name": "Escape", "src": "https://greenpointmedia.com.au/wp-content/uploads/2024/09/escape-copy.png" },
+        { "name": "9 Travel", "src": "https://greenpointmedia.com.au/wp-content/uploads/2024/09/Screenshot-2024-02-19-at-9-copy.webp" },
+        { "name": "Herald Sun", "src": "https://greenpointmedia.com.au/wp-content/uploads/2022/06/1280px-Herald_Sun.svg.png" },
+        { "name": "Time Out", "src": "https://greenpointmedia.com.au/wp-content/uploads/2024/06/png-transparent-time-out-group-magazine-time-out-new-york-time-out-digital-limited-cold-miscellaneous-text-london.png" },
+        { "name": "Hotel Conversation", "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/hotel-convo-logo-scaled.png" },
+        { "name": "Australian Dog Lover", "src": "https://greenpointmedia.com.au/wp-content/uploads/2025/07/ADL-Logo-Transparent.png" }
       ]
     }
   ]
