@@ -1,0 +1,74 @@
+{
+  "slug": "hyatt-house",
+  "title": "Hyatt House Makes Its Australian Debut",
+  "category": "Campaign",
+  "tags": ["PR", "Influencer", "Events"],
+  "thumbnail": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/Work-1.png",
+  "blocks": [
+    {
+      "type": "hero",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Hero.png",
+      "alt": "Hyatt House Melbourne interior"
+    },
+    {
+      "type": "intro",
+      "heading": "Hyatt House Makes Its Australian Debut",
+      "body": "Hyatt House made its Australian debut in South Melbourne, bringing a global extended-stay hotel to life with a distinctly local feel. Designed for modern living, it pairs apartment-style comforts and pet-friendly suites with a community-led atmosphere.\n\nGreenpoint partnered with Hyatt to lead the full PR and influencer strategy for this hotel's launch, helping position the new hotel as a must-know destination for press, travellers, long-stay guests, digital nomads and the local hospitality scene.\n\nWe shaped a storytelling framework to elevate exclusive editorial and digital content, connect Melbourne collaborators, activated brand and in-hotel communities, and executed media PR campaigns designed to build anticipation, drive awareness and sustain momentum long after opening."
+    },
+    {
+      "type": "image",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Building.png",
+      "alt": "Hyatt House Melbourne exterior"
+    },
+    {
+      "type": "section",
+      "number": "01",
+      "heading": "What We Did",
+      "list": [
+        "Launch Communications Strategy",
+        "Creative PR Campaigns",
+        "Influencer Collaborations & Stays",
+        "Launch Event Execution",
+        "Brand & Community Partnerships & Activation",
+        "Visual Asset Development"
+      ],
+      "body": "Greenpoint's involvement in PR and marketing strategy to launch Hyatt House through a fast, relevant place in Melbourne's accommodation market.\n\nKey activity formation, including collaborations with designers partnered to align its structures statement and Travel Trade influence event Friends of Hyatt House program, projects and businesses as lifestyle partners to help Hyatt House integrate authentically into the South Melbourne community."
+    },
+    {
+      "type": "image",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Entrance.png",
+      "alt": "Hyatt House Melbourne entrance"
+    },
+    {
+      "type": "section",
+      "number": "02",
+      "heading": "Outcomes",
+      "list": [
+        "61 pieces of media coverage across print, online and broadcast",
+        "290 influencer stories/posts/reels across Instagram and TikTok",
+        "28 influencer stays coordinated",
+        "9 partners and brand collaborations engaged",
+        "73M+ total potential audience reach across traditional media, influencer content, and social"
+      ],
+      "body": "The campaign delivered strong, multi-channel activity with Greenpoint's strategy shaping Hyatt House's recognition as a local South Melbourne destination since before it opened.\n\nHyatt House officially arrived, and its already become one of Melbourne's most talked about hotels in the area. With consistent visibility across four major PR campaigns, influencer storytelling, and high-touch partnerships like its Atypic, the hotel has captured the attention of both media and consumers."
+    },
+    {
+      "type": "image",
+      "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/HyattHouse-Suite.png",
+      "alt": "Hyatt House Melbourne suite"
+    },
+    {
+      "type": "logos",
+      "number": "03",
+      "heading": "As Seen On",
+      "items": [
+        { "name": "Escape", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-escape.png" },
+        { "name": "Travel", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-travel.png" },
+        { "name": "Herald Sun", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-heraldsun.png" },
+        { "name": "Gourmet Traveller", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-gourmet.png" },
+        { "name": "Hotel Conversation", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-hotelconversation.png" },
+        { "name": "Dog's Life", "src": "https://greenpointmedia.com.au/wp-content/uploads/2026/04/logo-dogslife.png" }
+      ]
+    }
+  ]
+}
