@@ -748,13 +748,41 @@ section[id]{scroll-margin-top:140px}
   object-fit:cover;
   display:block;
 }
-.gp-crisis-heading{
-  font-size:clamp(40px,5.5vw,80px);
-  line-height:1;
-  letter-spacing:-0.01em;
-  align-self:center;
-  text-align:center;
-  margin-bottom:0;
+/* Crisis custom layout */
+.gp-crisis-custom {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  padding: 80px 60px;
+  min-height: 100vh;
+  align-items: center;
+  gap: 60px;
+}
+
+.gp-crisis-copy {
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  max-width: 420px;
+}
+
+.gp-crisis-title {
+  align-self: center;
+}
+
+.gp-crisis-tagline {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  letter-spacing: 0.08em;
+}
+
+.gp-crisis-img {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  justify-self: end;
 }
 /* Hamburger — hidden on desktop */
 .gp-hamburger{display:none}
