@@ -791,12 +791,27 @@ section[id]{scroll-margin-top:140px}
 .gp-hamburger{display:none}
   
 /* ── Mobile ── */
-@media(max-width:768px.gp-svc-open,
+@media(max-width:768px){
+  /* Events */
+  .gp-svc-open{
+    grid-template-columns:1fr;
+  }
+  .gp-svc-open-left{
+    padding:48px 24px;
+  }
+  .gp-svc-open-right{
+    height:70vw;
+    min-height:260px;
+  }
+  .gp-svc-open-tagline{
+    bottom:24px;
+    right:24px;
+  }
+  /* Creative */
   .gp-creative{
     padding:48px 24px;
     min-height:0;
   }
-  .gp-svc-open-tagline,
   .gp-creative-tagline{
     position:static;
     display:block;
@@ -804,13 +819,11 @@ section[id]{scroll-margin-top:140px}
     max-width:100%;
     margin-bottom:24px;
   }
-  .gp-svc-open-bottom,
   .gp-creative-bottom{
     grid-template-columns:1fr;
     gap:32px;
     margin-top:32px;
   }
-  .gp-svc-open-img,
   .gp-creative-img-two{
     width:calc(100% + 24px);
     margin-right:-24px;
@@ -819,7 +832,8 @@ section[id]{scroll-margin-top:140px}
   .gp-creative-top{
     grid-template-columns:120px 1fr;
     gap:24px;
-  }){
+  }
+  section[id]{scroll-margin-top:72px}
 lasy code here?
   section[id]{scroll-margin-top:72px}
 
