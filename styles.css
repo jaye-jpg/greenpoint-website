@@ -751,7 +751,9 @@ section[id]{scroll-margin-top:140px}
 
 /* Hamburger — hidden on desktop */
 .gp-hamburger{display:none}
-  .gp-svc-open,
+  
+/* ── Mobile ── */
+@media(max-width:768px.gp-svc-open,
   .gp-creative{
     padding:48px 24px;
     min-height:0;
@@ -779,9 +781,7 @@ section[id]{scroll-margin-top:140px}
   .gp-creative-top{
     grid-template-columns:120px 1fr;
     gap:24px;
-  }
-/* ── Mobile ── */
-@media(max-width:768px){
+  }){
 lasy code here?
   section[id]{scroll-margin-top:72px}
 
