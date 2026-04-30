@@ -13,13 +13,13 @@
     <a href="index.html#top" class="gp-header-logo">
       <img src="https://greenpointmedia.com.au/wp-content/uploads/2022/06/d.navlogo.svg" alt="Greenpoint">
     </a>
-    <button class="gp-hamburger" id="gp-hamburger" aria-label="Menu">
+    <button class="gp-hamburger" id="gp-hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <div class="gp-header-nav" id="gp-nav">
       <div class="gp-services-dropdown">
-        <button class="gp-header-link" type="button" id="gp-services-btn">Services</button>
+        <button class="gp-header-link" type="button" id="gp-services-btn" aria-expanded="false" aria-controls="gp-services-menu">Services</button>
         <div class="gp-services-menu" id="gp-services-menu">
           <a href="index.html#pr">PR</a>
           <a href="index.html#content-social">Content &amp; Social Media</a>
@@ -44,13 +44,17 @@
 </div>
 
 <script>
+function escapeHTML(str) {
+  return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 (async function () {
   const grid = document.getElementById('work-grid');
 
   let studies;
   try {
     const res = await fetch('content/case-studies/index.json');
-    if (!res.ok) throw new Error();
+    if (!res.ok) throw new Error('Failed to load index');
     studies = await res.json();
   } catch (e) {
     grid.innerHTML = '<p style="opacity:0.4;font-size:14px">No case studies found.</p>';
@@ -59,40 +63,18 @@
 
   grid.innerHTML = studies.map(s => `
     <article class="work-card">
-      <a href="case-study.html?slug=${s.slug}">
+      <a href="case-study.html?slug=${escapeHTML(s.slug)}">
         <div class="work-card-img">
-          <img src="${s.thumbnail || ''}" alt="${s.title}">
+          <img src="${escapeHTML(s.thumbnail || '')}" alt="${escapeHTML(s.title)}">
         </div>
-        <span class="work-card-category">${s.category || ''}</span>
-        <p class="work-card-desc">${s.title}</p>
-        <span class="work-card-tags">${(s.tags || []).join(', ')}</span>
+        <span class="work-card-category">${escapeHTML(s.category || '')}</span>
+        <h3 class="work-card-desc">${escapeHTML(s.title)}</h3>
+        <span class="work-card-tags">${escapeHTML((s.tags || []).join(', '))}</span>
       </a>
     </article>
   `).join('');
 }());
 </script>
-<script>
-(function(){
-  const burger = document.getElementById('gp-hamburger');
-  const nav = document.getElementById('gp-nav');
-  const servicesBtn = document.getElementById('gp-services-btn');
-  const servicesMenu = document.getElementById('gp-services-menu');
-  burger.addEventListener('click', function(){
-    burger.classList.toggle('open');
-    nav.classList.toggle('open');
-    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-  });
-  servicesBtn.addEventListener('click', function(e){
-    if(window.innerWidth <= 768){ e.stopPropagation(); servicesMenu.classList.toggle('open'); }
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      burger.classList.remove('open');
-      nav.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-}());
-</script>
+<script src="nav.js"></script>
 </body>
 </html>
