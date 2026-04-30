@@ -690,13 +690,13 @@ section[id]{scroll-margin-top:140px}
   overflow:hidden;
 }
 .gp-svc-open-right img{
-  width:60%;
+  width:68%;
   height:90%;
   object-fit:cover;
   display:block;
   position:absolute;
   top:50%;
-  left:10%;
+  left:15%;
   transform:translateY(-50%);
 }
 .gp-svc-open-tagline{
