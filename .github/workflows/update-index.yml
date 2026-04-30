@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'content/case-studies/**.json'
+    paths-ignore:
+      - 'content/case-studies/index.json'
 
 jobs:
   update-index:
@@ -19,11 +21,13 @@ jobs:
           const fs = require('fs');
           const path = require('path');
           const dir = 'content/case-studies';
+          const validName = /^[a-z0-9-]+\.json$/;
           const files = fs.readdirSync(dir)
-            .filter(f => f.endsWith('.json') && f !== 'index.json');
-          const index = files.map(f => {
+            .filter(f => validName.test(f) && f !== 'index.json');
+          const entries = files.map(f => {
             try {
               const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+              if (!data.slug) { console.error('Skipping ' + f + ' - missing slug'); return null; }
               return {
                 slug: data.slug,
                 title: data.title,
@@ -36,6 +40,12 @@ jobs:
               return null;
             }
           }).filter(Boolean);
+          const seen = new Map();
+          entries.forEach(e => {
+            if (seen.has(e.slug)) console.error('Duplicate slug: ' + e.slug + ' — keeping last entry');
+            seen.set(e.slug, e);
+          });
+          const index = Array.from(seen.values());
           fs.writeFileSync(path.join(dir, 'index.json'), JSON.stringify(index, null, 2));
           console.log('Generated index with ' + index.length + ' case studies');
           "
