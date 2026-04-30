@@ -248,6 +248,7 @@ section[id]{scroll-margin-top:140px}
   padding:52px 60px;
   display:grid;
   grid-template-columns:300px 1fr;
+  gap:40px;
   align-items:start;
 }
 
@@ -291,7 +292,7 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-content-img-three{
-  width:50%;
+  width:100%;
   object-fit:cover;
   display:block;
 }
@@ -673,12 +674,115 @@ section[id]{scroll-margin-top:140px}
   mix-blend-mode:multiply;
 }
 
+.gp-svc-open{
+  position:relative;
+  padding:60px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.gp-svc-open-tagline{
+  position:absolute;
+  top:40px;
+  right:60px;
+  letter-spacing:0.08em;
+  max-width:220px;
+  text-align:right;
+  line-height:1.6;
+}
+.gp-svc-open-bottom{
+  display:grid;
+  grid-template-columns:35% 1fr;
+  gap:60px;
+  align-items:end;
+  margin-top:60px;
+}
+.gp-svc-open-img{
+  width:calc(100% + 60px);
+  margin-right:-60px;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  display:block;
+}
+.gp-creative{
+  position:relative;
+  padding:60px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.gp-creative-tagline{
+  position:absolute;
+  top:40px;
+  right:60px;
+  letter-spacing:0.08em;
+  max-width:220px;
+  text-align:right;
+  line-height:1.6;
+}
+.gp-creative-top{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:60px;
+  align-items:start;
+}
+.gp-creative-img-one{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+}
+.gp-creative-bottom{
+  display:grid;
+  grid-template-columns:35% 1fr;
+  gap:60px;
+  align-items:end;
+  margin-top:60px;
+}
+.gp-creative-img-two{
+  width:calc(100% + 60px);
+  margin-right:-60px;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  display:block;
+}
+
 /* Hamburger — hidden on desktop */
 .gp-hamburger{display:none}
-
+  .gp-svc-open,
+  .gp-creative{
+    padding:48px 24px;
+    min-height:0;
+  }
+  .gp-svc-open-tagline,
+  .gp-creative-tagline{
+    position:static;
+    display:block;
+    text-align:left;
+    max-width:100%;
+    margin-bottom:24px;
+  }
+  .gp-svc-open-bottom,
+  .gp-creative-bottom{
+    grid-template-columns:1fr;
+    gap:32px;
+    margin-top:32px;
+  }
+  .gp-svc-open-img,
+  .gp-creative-img-two{
+    width:calc(100% + 24px);
+    margin-right:-24px;
+    aspect-ratio:4/3;
+  }
+  .gp-creative-top{
+    grid-template-columns:120px 1fr;
+    gap:24px;
+  }
 /* ── Mobile ── */
 @media(max-width:768px){
-
+lasy code here?
   section[id]{scroll-margin-top:72px}
 
   /* Nav */
