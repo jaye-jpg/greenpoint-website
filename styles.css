@@ -690,7 +690,7 @@ section[id]{scroll-margin-top:140px}
   overflow:hidden;
 }
 .gp-svc-open-right img{
-  width:100%;
+  width:50%;
   height:100%;
   object-fit:cover;
   display:block;
