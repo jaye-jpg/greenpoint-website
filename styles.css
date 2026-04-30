@@ -752,7 +752,7 @@ section[id]{scroll-margin-top:140px}
 .gp-crisis-custom {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr 560px;
   padding: 80px 60px;
   min-height: 100vh;
   align-items: center;
@@ -779,7 +779,7 @@ section[id]{scroll-margin-top:140px}
 
 .gp-crisis-img {
   width: 100%;
-  max-width: 480px;
+  max-width: 560px;
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
