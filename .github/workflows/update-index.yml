@@ -4,8 +4,7 @@ on:
   push:
     paths:
       - 'content/case-studies/**.json'
-    paths-ignore:
-      - 'content/case-studies/index.json'
+      - '!content/case-studies/index.json'
 
 jobs:
   update-index:
