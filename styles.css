@@ -748,7 +748,14 @@ section[id]{scroll-margin-top:140px}
   object-fit:cover;
   display:block;
 }
-
+.gp-crisis-heading{
+  font-size:clamp(40px,5.5vw,80px);
+  line-height:1;
+  letter-spacing:-0.01em;
+  align-self:center;
+  text-align:center;
+  margin-bottom:0;
+}
 /* Hamburger — hidden on desktop */
 .gp-hamburger{display:none}
   
