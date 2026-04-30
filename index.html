@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Greenpoint</title>
+  <title>Greenpoint | Strategic &amp; Creative Communications Agency</title>
+  <meta name="description" content="Greenpoint is a strategic and creative communications agency that elevates brands through PR, content, influencer marketing, events and more.">
+  <meta property="og:title" content="Greenpoint | Strategic &amp; Creative Communications Agency">
+  <meta property="og:description" content="Greenpoint is a strategic and creative communications agency that elevates brands through PR, content, influencer marketing, events and more.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,13 +20,13 @@
       <img src="https://greenpointmedia.com.au/wp-content/uploads/2022/06/d.navlogo.svg" alt="Greenpoint">
     </a>
 
-    <button class="gp-hamburger" id="gp-hamburger" aria-label="Menu">
+    <button class="gp-hamburger" id="gp-hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <div class="gp-header-nav" id="gp-nav">
       <div class="gp-services-dropdown">
-        <button class="gp-header-link" type="button" id="gp-services-btn">Services</button>
+        <button class="gp-header-link" type="button" id="gp-services-btn" aria-expanded="false" aria-controls="gp-services-menu">Services</button>
 
         <div class="gp-services-menu" id="gp-services-menu">
           <a href="#pr">PR</a>
@@ -45,7 +49,7 @@
   <div class="gp-header-spacer"></div>
 
   <section class="gp-hero">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline preload="metadata" poster="https://greenpointmedia.com.au/wp-content/uploads/2026/04/PRHeroweb-scaled.png">
       <source src="https://greenpointmedia.com.au/wp-content/uploads/2026/04/Greenpoint_Hype-Reel_V3Web.mp4" type="video/mp4">
     </video>
   </section>
@@ -244,43 +248,15 @@
       </div>
 
       <div class="footer-social">
-        <a href="#">f</a>
-        <a href="#">X</a>
-        <a href="#">ig</a>
-        <a href="#">p</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="Pinterest">p</a>
       </div>
     </div>
   </footer>
 </div>
 
-<script>
-(function(){
-  const burger = document.getElementById('gp-hamburger');
-  const nav = document.getElementById('gp-nav');
-  const servicesBtn = document.getElementById('gp-services-btn');
-  const servicesMenu = document.getElementById('gp-services-menu');
-
-  burger.addEventListener('click', function(){
-    burger.classList.toggle('open');
-    nav.classList.toggle('open');
-    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-  });
-
-  servicesBtn.addEventListener('click', function(e){
-    if(window.innerWidth <= 768){
-      e.stopPropagation();
-      servicesMenu.classList.toggle('open');
-    }
-  });
-
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      burger.classList.remove('open');
-      nav.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-}());
-</script>
+<script src="nav.js"></script>
 </body>
 </html>
