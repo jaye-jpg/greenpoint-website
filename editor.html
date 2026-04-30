@@ -120,6 +120,7 @@
       margin-top: 4px;
     }
 
+    /* Blocks */
     .blocks-list {
       display: flex;
       flex-direction: column;
@@ -192,6 +193,7 @@
 
     .block-body.collapsed { display: none; }
 
+    /* List items */
     .list-items {
       display: flex;
       flex-direction: column;
@@ -220,6 +222,7 @@
 
     .btn-remove-item:hover { opacity: 0.8; }
 
+    /* Buttons */
     .add-block-area {
       margin-bottom: 48px;
     }
@@ -274,6 +277,7 @@
 
     .btn-add-list-item:hover { background: var(--light); }
 
+    /* Actions bar */
     .actions-bar {
       display: flex;
       gap: 16px;
@@ -322,6 +326,7 @@
       opacity: 0.4;
     }
 
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 32px;
@@ -354,6 +359,7 @@
   <h1>Case Study Editor</h1>
   <p class="subtitle">Fill in the details, add your content blocks, then download the JSON file to upload to GitHub.</p>
 
+  <!-- Details -->
   <div class="field-group">
     <p class="section-title">Case Study Details</p>
 
@@ -386,6 +392,7 @@
     </div>
   </div>
 
+  <!-- Blocks -->
   <div class="field-group">
     <p class="section-title">Content Blocks</p>
     <div class="blocks-list" id="blocks-list"></div>
@@ -402,6 +409,7 @@
     </div>
   </div>
 
+  <!-- Actions -->
   <div class="actions-bar">
     <button class="btn-primary" onclick="downloadJSON()">Download JSON</button>
     <button class="btn-secondary" onclick="previewCaseStudy()">Preview</button>
@@ -415,9 +423,23 @@
 let blocks = [];
 let blockCounter = 0;
 
+function escapeHTML(str) {
+  return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+(function cleanStalePreviewsExceptCurrent() {
+  try {
+    const keys = Object.keys(localStorage).filter(k => k.startsWith('gp-preview-'));
+    if (keys.length > 5) {
+      keys.slice(0, keys.length - 5).forEach(k => localStorage.removeItem(k));
+    }
+  } catch (e) {}
+}());
+
 function addBlock(type) {
   const id = ++blockCounter;
   const block = { id, type };
+
   if (type === 'section') {
     block.number = '';
     block.heading = '';
@@ -428,6 +450,7 @@ function addBlock(type) {
     block.heading = 'As Seen On';
     block.items = [{ name: '', src: '' }];
   }
+
   blocks.push(block);
   renderBlocks();
 }
@@ -458,6 +481,7 @@ function renderBlocks() {
 function renderBlockCard(block, idx) {
   const { id, type } = block;
   const labels = { hero: 'Hero Image', intro: 'Intro Text', image: 'Full Image', section: 'Section', logos: 'As Seen On' };
+
   let bodyHTML = '';
 
   if (type === 'hero' || type === 'image') {
@@ -465,13 +489,13 @@ function renderBlockCard(block, idx) {
       <div class="field">
         <label>Image URL</label>
         <input type="text" placeholder="https://greenpointmedia.com.au/wp-content/uploads/..."
-          value="${block.src || ''}"
+          value="${escapeHTML(block.src || '')}"
           oninput="updateBlock(${id}, 'src', this.value)">
       </div>
       <div class="field">
         <label>Alt text</label>
         <input type="text" placeholder="Describe the image"
-          value="${block.alt || ''}"
+          value="${escapeHTML(block.alt || '')}"
           oninput="updateBlock(${id}, 'alt', this.value)">
       </div>`;
   }
@@ -481,20 +505,20 @@ function renderBlockCard(block, idx) {
       <div class="field">
         <label>Heading</label>
         <input type="text" placeholder="Case study title"
-          value="${block.heading || ''}"
+          value="${escapeHTML(block.heading || '')}"
           oninput="updateBlock(${id}, 'heading', this.value)">
       </div>
       <div class="field">
         <label>Body text (separate paragraphs with a blank line)</label>
         <textarea placeholder="Write your intro copy here..." rows="6"
-          oninput="updateBlock(${id}, 'body', this.value)">${block.body || ''}</textarea>
+          oninput="updateBlock(${id}, 'body', this.value)">${escapeHTML(block.body || '')}</textarea>
       </div>`;
   }
 
   if (type === 'section') {
     const listItems = (block.list || ['']).map((item, li) => `
       <div class="list-item">
-        <input type="text" placeholder="List item" value="${item}"
+        <input type="text" placeholder="List item" value="${escapeHTML(item)}"
           oninput="updateListItem(${id}, ${li}, this.value)">
         <button class="btn-remove-item" onclick="removeListItem(${id}, ${li})">×</button>
       </div>`).join('');
@@ -503,12 +527,12 @@ function renderBlockCard(block, idx) {
       <div class="field-row">
         <div class="field">
           <label>Number</label>
-          <input type="text" placeholder="01" value="${block.number || ''}"
+          <input type="text" placeholder="01" value="${escapeHTML(block.number || '')}"
             oninput="updateBlock(${id}, 'number', this.value)">
         </div>
         <div class="field">
           <label>Heading</label>
-          <input type="text" placeholder="What We Did" value="${block.heading || ''}"
+          <input type="text" placeholder="What We Did" value="${escapeHTML(block.heading || '')}"
             oninput="updateBlock(${id}, 'heading', this.value)">
         </div>
       </div>
@@ -520,16 +544,16 @@ function renderBlockCard(block, idx) {
       <div class="field">
         <label>Body text (separate paragraphs with a blank line)</label>
         <textarea placeholder="Supporting copy..." rows="4"
-          oninput="updateBlock(${id}, 'body', this.value)">${block.body || ''}</textarea>
+          oninput="updateBlock(${id}, 'body', this.value)">${escapeHTML(block.body || '')}</textarea>
       </div>`;
   }
 
   if (type === 'logos') {
     const logoItems = (block.items || []).map((item, li) => `
       <div class="list-item">
-        <input type="text" placeholder="Publication name" value="${item.name || ''}"
+        <input type="text" placeholder="Publication name" value="${escapeHTML(item.name || '')}"
           oninput="updateLogoItem(${id}, ${li}, 'name', this.value)" style="max-width:200px">
-        <input type="text" placeholder="Logo image URL" value="${item.src || ''}"
+        <input type="text" placeholder="Logo image URL" value="${escapeHTML(item.src || '')}"
           oninput="updateLogoItem(${id}, ${li}, 'src', this.value)">
         <button class="btn-remove-item" onclick="removeLogoItem(${id}, ${li})">×</button>
       </div>`).join('');
@@ -538,12 +562,12 @@ function renderBlockCard(block, idx) {
       <div class="field-row">
         <div class="field">
           <label>Number</label>
-          <input type="text" placeholder="03" value="${block.number || ''}"
+          <input type="text" placeholder="03" value="${escapeHTML(block.number || '')}"
             oninput="updateBlock(${id}, 'number', this.value)">
         </div>
         <div class="field">
           <label>Heading</label>
-          <input type="text" placeholder="As Seen On" value="${block.heading || ''}"
+          <input type="text" placeholder="As Seen On" value="${escapeHTML(block.heading || '')}"
             oninput="updateBlock(${id}, 'heading', this.value)">
         </div>
       </div>
@@ -618,7 +642,9 @@ function buildJSON() {
 
   const outputBlocks = blocks.map(block => {
     const { id, ...rest } = block;
-    if (rest.type === 'section') rest.list = rest.list.filter(Boolean);
+    if (rest.type === 'section') {
+      rest.list = rest.list.filter(Boolean);
+    }
     return rest;
   });
 
