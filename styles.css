@@ -780,10 +780,13 @@ section[id]{scroll-margin-top:140px}
 .gp-crisis-img {
   width: 100%;
   max-width: 420px;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  display: block;
   justify-self: end;
 }
+
 /* Hamburger — hidden on desktop */
 .gp-hamburger{display:none}
   
