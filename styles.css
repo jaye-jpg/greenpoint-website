@@ -686,20 +686,17 @@ section[id]{scroll-margin-top:140px}
   justify-content:center;
 }
 .gp-svc-open-right{
-  display:grid;
-  align-items:center;
+  position:relative;
+  overflow:hidden;
 }
-
 .gp-svc-open-right img{
   width:100%;
-  max-width:840px;
-  height:auto;
-  aspect-ratio:3 / 4;
+  height:100%;
   object-fit:cover;
   display:block;
-  justify-self:end;
+  position:absolute;
+  inset:0;
 }
-
 .gp-svc-open-tagline{
   position:absolute;
   bottom:60px;
@@ -708,6 +705,7 @@ section[id]{scroll-margin-top:140px}
   text-align:right;
   line-height:1.6;
 }
+
 .gp-creative{
   position:relative;
   padding:60px;
