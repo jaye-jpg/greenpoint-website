@@ -686,19 +686,20 @@ section[id]{scroll-margin-top:140px}
   justify-content:center;
 }
 .gp-svc-open-right{
-  position:relative;
-  overflow:hidden;
+  display:grid;
+  align-items:center;
 }
+
 .gp-svc-open-right img{
-  width:68%;
-  height:90%;
+  width:100%;
+  max-width:840px;
+  height:auto;
+  aspect-ratio:3 / 4;
   object-fit:cover;
   display:block;
-  position:absolute;
-  top:50%;
-  left:15%;
-  transform:translateY(-50%);
+  justify-self:end;
 }
+
 .gp-svc-open-tagline{
   position:absolute;
   bottom:60px;
