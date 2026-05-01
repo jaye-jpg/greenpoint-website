@@ -360,6 +360,7 @@ section[id]{scroll-margin-top:140px}
   object-fit:cover;
   object-position:70% 20%;
   transform:scale(0.8);
+transform-origin:bottom center;
   z-index:0;
 }
 
