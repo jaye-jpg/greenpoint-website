@@ -685,6 +685,9 @@ section[id]{scroll-margin-top:140px}
   flex-direction:column;
   justify-content:center;
 }
+.gp-svc-open-left h2{
+  white-space:nowrap;
+}
 .gp-svc-open-right{
   position:relative;
   overflow:hidden;
