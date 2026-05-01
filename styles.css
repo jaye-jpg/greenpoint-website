@@ -680,7 +680,7 @@ section[id]{scroll-margin-top:140px}
   min-height:100vh;
 }
 .gp-svc-open-left{
-  padding:80px 30px;
+  padding:80px 60px;
   display:flex;
   flex-direction:column;
   justify-content:center;
