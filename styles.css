@@ -252,6 +252,10 @@ section[id]{scroll-margin-top:140px}
   align-items:start;
 }
 
+#pr{
+  grid-template-columns:28% 72%;
+}
+
 .gp-pr-image{
   position:relative;
   min-height:100vh;
@@ -292,7 +296,7 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-content-img-three{
-  width:100%;
+  width:70%;
   object-fit:cover;
   display:block;
 }
