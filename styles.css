@@ -296,9 +296,13 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-content-img-three{
-  width:70%;
+  width:65%;
   object-fit:cover;
   display:block;
+  margin-top:40px;
+  position:relative;
+  z-index:2;
+  margin-bottom:-100px;
 }
 
 .gp-content-tagline{
