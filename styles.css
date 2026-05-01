@@ -691,11 +691,13 @@ section[id]{scroll-margin-top:140px}
 }
 .gp-svc-open-right img{
   width:50%;
-  height:100%;
+  height:80%;
   object-fit:cover;
   display:block;
   position:absolute;
-  inset:0;
+  top:50%;
+  right:-5%;
+  transform:translateY(-50%);
 }
 .gp-svc-open-tagline{
   position:absolute;
