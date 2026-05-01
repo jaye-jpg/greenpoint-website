@@ -839,9 +839,7 @@ section[id]{scroll-margin-top:140px}
     grid-template-columns:120px 1fr;
     gap:24px;
   }
-  section[id]{scroll-margin-top:72px}
-lasy code here?
-  section[id]{scroll-margin-top:72px}
+section[id]{scroll-margin-top:72px}
 
   /* Nav */
   .gp-header{
@@ -904,9 +902,8 @@ lasy code here?
   .gp-hamburger.open span:nth-child(2){opacity:0}
   .gp-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  .gp-services-dropdown{width:100%}
 
-  .gp-services-menu{
+    .gp-services-menu{
     position:static;
     opacity:1;
     visibility:visible;
