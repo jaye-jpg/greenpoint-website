@@ -696,7 +696,7 @@ section[id]{scroll-margin-top:140px}
   display:block;
   position:absolute;
   top:50%;
-  right:15%;
+  right:25%;
   transform:translateY(-50%);
 }
 .gp-svc-open-tagline{
