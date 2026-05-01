@@ -299,10 +299,10 @@ section[id]{scroll-margin-top:140px}
   width:50%;
   object-fit:cover;
   display:block;
-  margin-top:80px;
-  position:relative;
+  position:absolute;
+  bottom:-80px;
+  right:60px;
   z-index:2;
-  margin-bottom:-800px;
 }
 
 .gp-content-tagline{
