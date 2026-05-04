@@ -353,8 +353,33 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-partnerships{
+  display:grid;
+  grid-template-columns:40% 60%;
   padding:80px 60px;
-  gap:60px;
+  gap:80px;
+  align-items:stretch;
+}
+
+.gp-partnership-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.gp-partnership-right{
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:40px;
+}
+
+.gp-partnership-tagline{
+  letter-spacing:.1em;
+  padding-top:40px;
+}
+
+.gp-partnership-body{
+  max-width:317px;
+  align-self:center;
 }
 
 .gp-partnership-img-one{
@@ -370,7 +395,7 @@ section[id]{scroll-margin-top:140px}
   aspect-ratio:16/9;
   object-fit:cover;
   display:block;
-  align-self:flex-end;
+  justify-self:end;
 }
 
 /* Influencer section */
