@@ -361,10 +361,11 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-partnership-img-two{
-  width:100%;
+  width:50%;
   aspect-ratio:16/9;
   object-fit:cover;
   display:block;
+  align-self:flex-end;
 }
 
 /* Influencer section */
