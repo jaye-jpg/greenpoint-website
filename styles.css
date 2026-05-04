@@ -602,12 +602,14 @@ transform-origin:bottom center;
 
 .cs-image{
   width:100%;
+  padding:0 60px;
   overflow:hidden;
 }
 
 .cs-image img{
   width:100%;
   height:auto;
+  max-height:600px;
   display:block;
   object-fit:cover;
   object-position:center;
