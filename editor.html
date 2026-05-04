@@ -694,7 +694,31 @@ document.addEventListener('DOMContentLoaded', () => {
   slugInput.addEventListener('input', () => {
     slugInput.dataset.manual = '1';
   });
+
+  loadTemplate();
 });
+
+function loadTemplate() {
+  blocks = [];
+  blockCounter = 0;
+
+  const template = [
+    { type: 'hero', src: '', alt: '' },
+    { type: 'intro', heading: '', body: '' },
+    { type: 'image', src: '', alt: '' },
+    { type: 'section', number: '01', heading: 'The Brief', list: [''], body: '' },
+    { type: 'section', number: '02', heading: 'What We Did', list: [''], body: '' },
+    { type: 'section', number: '03', heading: 'The Results', list: [''], body: '' },
+    { type: 'logos', number: '04', heading: 'As Seen On', items: [{ name: '', src: '' }] },
+  ];
+
+  template.forEach(t => {
+    const id = ++blockCounter;
+    blocks.push({ id, ...t });
+  });
+
+  renderBlocks();
+}
 </script>
 </body>
 </html>
