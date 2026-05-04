@@ -314,7 +314,7 @@ section[id]{scroll-margin-top:140px}
   width:55%;
   max-height:55vh;
   object-fit:cover;
-  object-position:top;
+  object-position:bottom;
   display:block;
   margin-top:-60;
 }
