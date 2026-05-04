@@ -96,15 +96,36 @@ body{
 .gp .services-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  border-top:var(--border-d);
 }
 
 .gp .svc-item{
   font-size:14px;
   line-height:23px;
-  padding:14px 40px 14px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:6px 0;
   color:#fff;
+}
+.gp-services-new{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+  padding:60px;
+  min-height:50vh;
+}
+
+.gp-services-heading{
+  grid-column:1;
+}
+
+.gp-services-new .services-grid{
+  grid-column:2;
+}
+
+.gp-services-tagline{
+  position:absolute;
+  bottom:60px;
+  left:60px;
+  letter-spacing:0.08em;
 }
 
 /* Header */
