@@ -388,6 +388,12 @@ transform-origin:bottom center;
 
 .gp-influencer-body{
   position:absolute;
+  bottom:160px;
+  left:60px;
+  max-width:400px;
+}
+.gp-influencer-body2{
+  position:absolute;
   bottom:80px;
   left:60px;
   max-width:400px;
