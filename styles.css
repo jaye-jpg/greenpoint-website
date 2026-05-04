@@ -397,7 +397,7 @@ transform-origin:bottom center;
   position:absolute;
   top:50%;
   left:60px;
-  transform:translateY(20px);
+  transform:translateY(40px);
   max-width:400px;
 }
 
