@@ -803,11 +803,13 @@ transform-origin:bottom center;
 .gp-crisis-img {
   width: 100%;
   max-width: 840px;
-  height: auto;
+  height: 100%;
+  max-height: 100vh;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
   justify-self: end;
+  align-self: stretch;
 }
 
 /* Hamburger — hidden on desktop */
