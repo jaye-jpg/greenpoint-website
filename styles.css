@@ -311,13 +311,12 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-content-img-two{
-  width:auto;
+  width:55%;
   max-height:65vh;
   object-fit:contain;
   object-position:top;
   display:block;
   margin-top:60px;
-  margin-left:60px;
 }
 
 .gp-content-img-three{
