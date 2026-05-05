@@ -7,8 +7,11 @@
   --border-d:1px solid rgba(255,255,255,0.12);
   --border-l:1px solid rgba(0,0,0,0.08);
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
+
+.gp > section{
+  min-height:100vh;
+}
 
 html{
   scroll-behavior:smooth;
