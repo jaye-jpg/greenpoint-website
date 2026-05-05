@@ -122,6 +122,10 @@ body{
   grid-column:1;
 }
 
+.gp-services-new{
+  padding:80px var(--pad);
+}
+
 .gp-services-new .services-grid{
   grid-column:2;
 }
