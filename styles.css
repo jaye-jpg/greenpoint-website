@@ -157,6 +157,8 @@ body{
 .gp-header-logo img{
   height:22px;
   display:block;
+  position:relative;
+  top:-3px;
 }
 
 .gp-header-nav{
