@@ -58,11 +58,19 @@ body{
 .gp .bd-dark{border-top:var(--border-d)}
 .gp .bd-light{border-top:var(--border-l)}
 
+.gp .svc-panel{
+  padding:80px var(--pad);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:100vh;
+  position:relative;
+}
+
 #pr .svc-panel{
   justify-content:center;
   gap:40px;
 }
-
 #pr .svc-tagline{
   position:absolute;
   bottom:80px;
