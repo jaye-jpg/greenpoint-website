@@ -363,7 +363,7 @@ section[id]{scroll-margin-top:140px}
 .gp-partnerships{
   display:grid;
   grid-template-columns:40% 60%;
-  padding:80px 60px;
+  padding:80px var(--pad);
   gap:80px;
   align-items:stretch;
 }
@@ -436,7 +436,7 @@ transform-origin:bottom center;
   position:absolute;
   inset:0;
   z-index:2;
-  padding:80px 60px;
+  padding:80px var(--pad);
 }
 
 .gp-influencer-heading{
@@ -546,7 +546,7 @@ transform-origin:bottom center;
 
 /* Work page */
 .work-page{
-  padding:80px 60px 120px;
+  padding:80px var(--pad) 120px;
 }
 
 .work-title{
@@ -757,7 +757,7 @@ transform-origin:bottom center;
   min-height:100vh;
 }
 .gp-svc-open-left{
-  padding:80px 60px;
+  padding:80px var(--pad);
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -836,7 +836,7 @@ transform-origin:bottom center;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 840px;
-  padding: 80px 60px;
+  padding: 80px var(--pad);
   min-height: 100vh;
   align-items: center;
   gap: 60px;
