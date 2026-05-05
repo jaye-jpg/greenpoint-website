@@ -104,13 +104,18 @@ body{
   padding:6px 0;
   color:#fff;
 }
-.gp-services-new{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:start;
-  padding:60px;
-  min-height:50vh;
+.gp-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:99999;
+  height:80px;
+  background:#1a1a1a;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 60px;
 }
 
 .gp-services-heading{
@@ -851,6 +856,7 @@ transform-origin:bottom center;
   left: 60px;
   letter-spacing: 0.08em;
 }
+.gp-header-spacer{height:80px}
 
 .gp-crisis-img {
   width: 100%;
