@@ -150,7 +150,8 @@ body{
 
 .gp-header-logo{
   line-height:0;
-  display:block;
+  display:flex;
+  align-items:center;
 }
 
 .gp-header-logo img{
