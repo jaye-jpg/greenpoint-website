@@ -132,12 +132,13 @@ body{
   padding:0 var(--pad);
 }
 
-.gp-services-heading{
-  grid-column:1;
-}
-
 .gp-services-new{
   padding:80px var(--pad);
+  min-height:50vh !important;
+}
+
+.gp-services-heading{
+  grid-column:1;
 }
 
 .gp-services-new .services-grid{
@@ -281,7 +282,7 @@ section[id]{scroll-margin-top:140px}
   grid-template-columns:300px 1fr;
   gap:40px;
   align-items:start;
-  min-height:25vh;
+  min-height:25vh !important;
 }
 
 #pr{
