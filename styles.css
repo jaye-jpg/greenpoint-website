@@ -281,10 +281,10 @@ section[id]{scroll-margin-top:140px}
 /* Specific sections */
 .gp-about{
   padding:52px var(--pad);
-  display:grid;
-  grid-template-columns:300px 1fr;
-  gap:40px;
-  align-items:start;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
   min-height:25vh !important;
 }
 
