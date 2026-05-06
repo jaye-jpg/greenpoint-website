@@ -406,14 +406,6 @@ section[id]{scroll-margin-top:140px}
   z-index:0;
 }
 
-.gp .gp-influencer::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.4);
-  z-index:1;
-}
-
 .gp .gp-influencer-inner{
   position:absolute;
   inset:0;
