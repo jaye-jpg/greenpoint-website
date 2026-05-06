@@ -96,7 +96,8 @@ body{
   position:absolute;
   right:0;
   top:10%;
-  width:220px;
+  width:524px;
+  max-width:100%;
 }
 
 .gp .storytellers{
