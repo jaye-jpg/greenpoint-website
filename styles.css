@@ -93,7 +93,7 @@ body{
 }
 
 .gp .storytellers{
-  min-height:100vh;
+  min-height:50vh !important;
   display:flex;
   flex-direction:column;
   justify-content:center;
