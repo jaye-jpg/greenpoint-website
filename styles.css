@@ -1213,4 +1213,122 @@ section[id]{scroll-margin-top:140px}
     flex-wrap:wrap;
     gap:16px;
   }
+
+  /* Services section */
+  .gp-services-new{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:48px 24px 80px;
+  }
+  .gp-services-heading{grid-column:1}
+  .gp-services-new .services-grid{
+    grid-column:1;
+    width:100%;
+  }
+  .gp-services-tagline{
+    left:24px;
+    bottom:40px;
+  }
+
+  /* Events image */
+  .gp-svc-open-right img{
+    width:85%;
+    right:7.5%;
+  }
+
+  /* Influencer — fix var(--pad) on absolute elements */
+  .gp-influencer-heading{
+    left:24px;
+  }
+  .gp-influencer-body,
+  .gp-influencer-body2{
+    left:24px;
+    max-width:calc(100% - 48px);
+  }
+  .gp-influencer-tagline{
+    left:24px;
+    right:auto;
+    text-align:left;
+    bottom:40px;
+  }
+
+  /* Content section — make text flow below image */
+  .gp .content-grid{
+    height:auto;
+  }
+  .gp-content-text{
+    position:static;
+    width:100%;
+    padding:24px 24px 0;
+  }
+
+  /* Crisis section */
+  .gp-crisis-custom{
+    grid-template-columns:1fr;
+    padding:48px 24px;
+    min-height:0;
+    gap:40px;
+  }
+  .gp-crisis-copy{
+    position:static;
+    max-width:100%;
+  }
+  .gp-crisis-title{
+    font-size:40px;
+    line-height:1.1;
+  }
+  .gp-crisis-tagline{
+    position:static;
+    display:block;
+    margin-top:24px;
+  }
+  .gp-crisis-img{
+    max-width:100%;
+    height:auto;
+    max-height:none;
+    justify-self:stretch;
+  }
+
+  /* Partnerships */
+  .gp-partnership-img-two{
+    width:100%;
+    justify-self:stretch;
+  }
+
+  /* Case study typography */
+  .cs-section-num{
+    font-size:28px;
+    line-height:1.1;
+    margin-bottom:20px;
+  }
+  .cs-section-list li{
+    font-size:18px;
+    line-height:28px;
+  }
+  .cs-section-right{
+    padding-top:0;
+  }
+  .cs-intro-body{
+    padding-top:0;
+  }
+  .cs-client-name{
+    margin-bottom:12px;
+  }
+  .cs-intro-heading{
+    margin-bottom:24px;
+  }
+  .cs-nav{
+    padding:32px 24px;
+  }
+  .cs-logos-num{
+    margin-bottom:24px;
+  }
+  .cs-hero img{
+    height:50vw;
+    min-height:240px;
+  }
+  .cs-image img{
+    height:50vw;
+    min-height:200px;
+  }
 }
