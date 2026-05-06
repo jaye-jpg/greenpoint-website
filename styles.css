@@ -135,6 +135,7 @@ body{
 .gp-services-new{
   padding:80px var(--pad);
   min-height:50vh !important;
+  position:relative;
 }
 
 .gp-services-heading{
