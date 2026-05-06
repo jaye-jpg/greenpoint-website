@@ -41,6 +41,62 @@
     <div class="work-grid" id="work-grid"></div>
   </section>
 
+  <footer class="bg-dark bd-dark" style="padding:60px var(--pad)">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+        <a href="#">Adipiscing</a>
+        <a href="#">Elit</a>
+        <a href="#">Sed do</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem ipsum</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+        <a href="#">Adipiscing</a>
+        <a href="#">Elit</a>
+        <a href="#">Sed do</a>
+        <a href="#">Eiusmod</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem ipsum</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Responsible disclosure</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="Pinterest">p</a>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <script>
@@ -61,18 +117,22 @@ function escapeHTML(str) {
     return;
   }
 
-  grid.innerHTML = studies.map(s => `
+  grid.innerHTML = studies.map(s => {
+    const parts = s.title.split(' - ');
+    const clientName = parts[0] || '';
+    const heading = parts.slice(1).join(' - ') || s.title;
+    return `
     <article class="work-card">
       <a href="case-study.html?slug=${escapeHTML(s.slug)}">
         <div class="work-card-img">
           <img src="${escapeHTML(s.thumbnail || '')}" alt="${escapeHTML(s.title)}">
         </div>
-        <span class="work-card-category">${escapeHTML(s.category || '')}</span>
-        <h3 class="work-card-desc">${escapeHTML(s.title)}</h3>
+        <span class="work-card-client">${escapeHTML(clientName)}</span>
+        <h3 class="work-card-desc">${escapeHTML(heading)}</h3>
         <span class="work-card-tags">${escapeHTML((s.tags || []).join(', '))}</span>
       </a>
-    </article>
-  `).join('');
+    </article>`;
+  }).join('');
 }());
 </script>
 <script src="nav.js"></script>

@@ -38,6 +38,62 @@
 
   <main id="cs-root" class="bg-light"></main>
 
+  <footer class="bg-dark bd-dark" style="padding:60px var(--pad)">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+        <a href="#">Adipiscing</a>
+        <a href="#">Elit</a>
+        <a href="#">Sed do</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem ipsum</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+        <a href="#">Adipiscing</a>
+        <a href="#">Elit</a>
+        <a href="#">Sed do</a>
+        <a href="#">Eiusmod</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+        <a href="#">Amet</a>
+        <a href="#">Consectetur</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Lorem ipsum</p>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Dolor sit</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Responsible disclosure</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="Pinterest">p</a>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <script>
@@ -76,8 +132,23 @@ function escapeHTML(str) {
 
   document.title = escapeHTML(data.title) + ' | Greenpoint';
 
+  let index = [];
+  try {
+    const idxRes = await fetch('content/case-studies/index.json');
+    if (idxRes.ok) index = await idxRes.json();
+  } catch(e) {}
+
+  const currentIndex = index.findIndex(s => s.slug === slug);
+  const prev = currentIndex > 0 ? index[currentIndex - 1] : null;
+  const next = currentIndex !== -1 && currentIndex < index.length - 1 ? index[currentIndex + 1] : null;
+
+  const navHtml = `<div class="cs-nav bg-light">
+    ${prev ? `<a href="case-study.html?slug=${escapeHTML(prev.slug)}" class="cs-nav-link">&#8249; Previous</a>` : '<span class="cs-nav-link cs-nav-disabled">&#8249; Previous</span>'}
+    ${next ? `<a href="case-study.html?slug=${escapeHTML(next.slug)}" class="cs-nav-link">Next &#8250;</a>` : '<span class="cs-nav-link cs-nav-disabled">Next &#8250;</span>'}
+  </div>`;
+
   const html = (data.blocks || []).map(renderBlock).join('');
-  document.getElementById('cs-root').innerHTML = html;
+  document.getElementById('cs-root').innerHTML = html + navHtml;
 }());
 
 function renderBlock(block) {
@@ -88,13 +159,18 @@ function renderBlock(block) {
         <img src="${escapeHTML(block.src)}" alt="${escapeHTML(block.alt || '')}">
       </div>`;
 
-    case 'intro':
-      return `<div class="cs-intro">
-        <h1 class="cs-intro-heading t-upper f300">${escapeHTML(block.heading)}</h1>
+    case 'intro': {
+      const parts = block.heading.split(' - ');
+      const clientName = parts[0] || '';
+      const articleTitle = parts.slice(1).join(' - ') || block.heading;
+      return `<div class="cs-intro bg-light">
+        <span class="cs-client-name t-upper f300">${escapeHTML(clientName)}</span>
+        <h1 class="cs-intro-heading t-upper f300 t-dark">${escapeHTML(articleTitle)}</h1>
         <div class="cs-intro-body">
-          ${(block.body || '').split('\n\n').map(p => `<p>${escapeHTML(p)}</p>`).join('')}
+          ${(block.body || '').trim().split('\n\n').filter(Boolean).map(p => `<p class="f300">${escapeHTML(p)}</p>`).join('')}
         </div>
       </div>`;
+    }
 
     case 'image':
       return `<div class="cs-image">
