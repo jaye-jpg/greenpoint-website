@@ -33,6 +33,10 @@ body{
   overflow-x:hidden;
 }
 
+.gp-brands{
+  min-height:40vh !important;
+}
+
 .gp .t-white{color:#fff}
 .gp .t-dark{color:var(--dark)}
 .gp .t-light{color:var(--light)}
@@ -85,7 +89,7 @@ body{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:60px;
-  align-items:start;
+  align-items:center;
 }
 
 .gp .storytellers{
@@ -138,6 +142,9 @@ body{
   padding:80px var(--pad);
   min-height:50vh !important;
   position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
 }
 
 .gp-services-heading{
@@ -146,6 +153,8 @@ body{
 
 .gp-services-new .services-grid{
   grid-column:2;
+  justify-self:end;
+  width:60%;
 }
 
 .gp-services-tagline{
@@ -291,6 +300,8 @@ section[id]{scroll-margin-top:140px}
 #pr{
   grid-template-columns:25% 75%;
   position:relative;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
 }
 
 .gp-pr-image{
@@ -386,6 +397,7 @@ section[id]{scroll-margin-top:140px}
   object-fit:cover;
   display:block;
   justify-self:end;
+  margin-bottom:40px;
 }
 
 /* Influencer section */
