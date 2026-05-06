@@ -87,10 +87,16 @@ body{
 .gp .svc-tagline{letter-spacing:0.08em}
 
 .gp .content-grid{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:40px;
+  position:relative;
+  display:block;
+  height:60vh;
+}
+
+.gp-content-text{
+  position:absolute;
+  right:0;
+  top:10%;
+  width:220px;
 }
 
 .gp .storytellers{
@@ -326,12 +332,10 @@ section[id]{scroll-margin-top:140px}
 }
 
 .gp-content-img{
-  width:auto;
-  max-width:55%;
-  max-height:60vh;
+  width:100%;
+  height:100%;
   object-fit:contain;
   display:block;
-  margin:0 auto;
 }
 
 .gp-content-tagline{
