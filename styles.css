@@ -337,7 +337,12 @@ section[id]{scroll-margin-top:140px}
   object-fit:contain;
   display:block;
 }
-
+.gp-content-text{
+  position:absolute;
+  right:0;
+  top:10%;
+  width:220px;
+}
 .gp-content-tagline{
   position:absolute;
   bottom:60px;
