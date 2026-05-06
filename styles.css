@@ -327,8 +327,8 @@ section[id]{scroll-margin-top:140px}
 
 .gp-content-img{
   width:auto;
-  max-width:85%;
-  max-height:70vh;
+  max-width:55%;
+  max-height:60vh;
   object-fit:contain;
   display:block;
   margin:0 auto;
