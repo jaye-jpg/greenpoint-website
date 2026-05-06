@@ -76,6 +76,7 @@ body{
 #pr .svc-panel{
   justify-content:center;
   gap:40px;
+  padding-top:0;
 }
 #pr .svc-tagline{
   position:absolute;
