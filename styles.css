@@ -120,7 +120,7 @@ body{
 }
 
 .gp .st-indent{margin-left:12%}
-.gp .st-mobile{display:none;}
+.gp .st-mobile{display:none !important;}
 
 .gp .services-grid{
   display:grid;
@@ -1278,8 +1278,8 @@ section[id]{scroll-margin-top:140px}
   .gp .storytellers{padding:20px 20px 40px;min-height:0;position:relative;z-index:1;}
 
   .gp .st-line{font-size:clamp(80px,22vw,200px);white-space:normal;}
-  .gp .st-mobile{display:block;}
-  .gp .st-desktop{display:none;}
+  .gp .st-mobile{display:block !important;}
+  .gp .st-desktop{display:none !important;}
   .gp .st-indent{margin-left:8%}
 
   #partnerships{padding-top:0 !important;padding-bottom:0 !important;min-height:0 !important;}
