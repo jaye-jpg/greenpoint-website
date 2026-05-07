@@ -108,6 +108,8 @@ body{
   justify-content:center;
   padding:60px var(--pad);
   overflow:hidden;
+  position:relative;
+  z-index:1;
 }
 
 .gp .st-line{
@@ -435,18 +437,19 @@ section[id]{scroll-margin-top:140px}
 /* Influencer section */
 .gp .gp-influencer{
   position:relative;
-  overflow:hidden;
+  overflow:visible;
+  z-index:2;
 }
 
 .gp .gp-influencer-bg{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  right:0;
+  bottom:-25%;
   width:100%;
-  height:100%;
   object-fit:cover;
   object-position:70% 20%;
-  transform:scale(0.8);
-  transform-origin:bottom center;
   z-index:0;
 }
 
