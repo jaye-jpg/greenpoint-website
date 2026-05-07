@@ -109,7 +109,6 @@ body{
   padding:60px var(--pad);
   overflow:hidden;
   position:relative;
-  z-index:1;
 }
 
 .gp .st-line{
@@ -437,8 +436,7 @@ section[id]{scroll-margin-top:140px}
 /* Influencer section */
 .gp .gp-influencer{
   position:relative;
-  overflow:visible;
-  z-index:2;
+  overflow:hidden;
 }
 
 .gp .gp-influencer-bg{
