@@ -443,9 +443,10 @@ section[id]{scroll-margin-top:140px}
 
 .gp .gp-influencer-bg{
   position:absolute;
-  right:10%;
-  bottom:-21%;
-  height:85%;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-24%;
+  height:95%;
   width:auto;
   object-fit:contain;
   z-index:1;
