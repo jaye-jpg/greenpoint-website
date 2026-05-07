@@ -471,7 +471,7 @@ section[id]{scroll-margin-top:140px}
   top:50%;
   left:var(--pad);
   transform:translateY(-60px);
-  max-width:400px;
+  width:321px;
 }
 
 .gp-influencer-body2{
@@ -479,7 +479,7 @@ section[id]{scroll-margin-top:140px}
   top:50%;
   left:var(--pad);
   transform:translateY(40px);
-  max-width:400px;
+  width:321px;
 }
 
 .gp-influencer-tagline{
