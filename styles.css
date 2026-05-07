@@ -1170,7 +1170,7 @@ section[id]{scroll-margin-top:140px}
 
   .gp-about{
     grid-template-columns:1fr;
-    padding:20px;
+    padding:20px !important;
     gap:20px;
     min-height:0 !important;
   }
@@ -1207,6 +1207,8 @@ section[id]{scroll-margin-top:140px}
     justify-content:flex-start;
     gap:0;
   }
+  #pr .svc-panel{padding-bottom:0 !important;}
+  .gp .svc-body{width:100%;}
   #pr h2{font-size:30px;line-height:40px;letter-spacing:normal;margin-bottom:20px !important;}
   #pr p{margin-bottom:20px;}
   .gp .svc-tagline,
